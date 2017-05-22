@@ -154,6 +154,14 @@ link: https://jsfiddle.net/amortka/6x6gmkd4/
 Rozszerzenie nie jest częścią domyślnej paczki (d3.js bundle), dlatego też na potrzeby playgrounda ładowane jest osobnym script tagiem. Jednak docelowo wybrane części d3 oraz rozszerzenia powinny być budowane przy użyciu [Rollupa](https://rollupjs.org/) lub [Webpacka](https://webpack.github.io/).
 rozszerzenie: https://github.com/d3/d3-selection-multi
 
+## Przydatne linki:
+- [playground codepen](https://codepen.io/amortka/pen/qmLddG?editors=0010)
+- [svg basics](https://bl.ocks.org/curran/098af28142c664535cdf624d09dd90a8)
+- [svg docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element)
+- [svg for begginers](http://unicorn-ui.com/blog/svg-for-beginners.html)
+- [svg tutorial](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial)
+- [using svg](https://css-tricks.com/using-svg/)
+
 
 
 
