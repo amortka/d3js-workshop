@@ -156,12 +156,20 @@ rozszerzenie: https://github.com/d3/d3-selection-multi
 
 ## Przydatne linki:
 - [playground codepen](https://codepen.io/amortka/pen/qmLddG?editors=0010)
+- [dokumentacja d3.js](https://github.com/d3/d3/blob/master/API.md)
 - [svg basics](https://bl.ocks.org/curran/098af28142c664535cdf624d09dd90a8)
 - [svg docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element)
 - [svg for begginers](http://unicorn-ui.com/blog/svg-for-beginners.html)
 - [svg tutorial](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial)
 - [using svg](https://css-tricks.com/using-svg/)
 
+Na koniec parę inspiracji:
+- [bl.ocks](https://bl.ocks.org/)
+- [Twórca d3.js](https://bost.ocks.org/mike/)
+- [Wizualizacje, tematycznie](http://christopheviau.com/d3list/gallery.html)
+- [galeria twórcy d3.js](https://bl.ocks.org/mbostock)
+- [d3 1000 demos](http://techslides.com/over-1000-d3-js-examples-and-demos)
+- [30 amazing data viz galleries](http://visualoop.com/blog/11044/30-amazing-data-viz-galleries-everyone-should-follow)
 
 
 
