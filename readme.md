@@ -154,6 +154,100 @@ link: https://jsfiddle.net/amortka/6x6gmkd4/
 Rozszerzenie nie jest częścią domyślnej paczki (d3.js bundle), dlatego też na potrzeby playgrounda ładowane jest osobnym script tagiem. Jednak docelowo wybrane części d3 oraz rozszerzenia powinny być budowane przy użyciu [Rollupa](https://rollupjs.org/) lub [Webpacka](https://webpack.github.io/).
 rozszerzenie: https://github.com/d3/d3-selection-multi
 
+---
+### Część 2
+
+## Rysowanie punktów na okręgu
+Aby rysować punkty po okręgu potrzebne nam są następujące informacje:
+- współrzędne punktu wokół którego chcemy rysować punkty,
+- promień czyli odległość w jakiej będą znajdować się punkty od punktu centralnego
+- kąt w jakim dany punkt powinien się znaleźć.
+
+Korzystając z własności funkcji trygonometrycznych sinus i cosinus, znajac ich przebieg:
+![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Sine_cosine_one_period.svg/600px-Sine_cosine_one_period.svg.png)
+oraz wiedzy, że pełen kąt jest równy 2 * PI, możemy określić przesunięcie punktu x oraz y:
+ ```javascript
+ let x = r * -Math.sin(alfa);
+ let y = r * -Math.cos(alfa);
+ ```
+to która funkcja jest użyta jako pierwsza zależne jest od miejsca w którym chcemy zacząć. Dla powyższego przykładu dla `alfa === 0` przesunięcie na osi `x` jest równe 0 (`r * -Math.sin(0)`) oraz y = -r (`r * -Math.cos(0)`). To powoduje przesunięcie punktu w pozycję wyjściową na górze oraz obracanie przeciwnie do ruchu wskazówek zegara. Zmieniając znak oraz zamieniając funkcje sin z cos (zawsze muszą występować parami) mamy możliwość ustawienia punktu początkowego w dowolnym miejscu oraz zmienić kierunek obrotu.
+
+Argumentem funkcji `Math.sin` oraz ` Math.cos` jest kąt mierzony w radianach, aby przeliczyć kąt na radiany i odwrotnie posługujemy się następującymi wzorami:
+```javascript
+function rad2deg(rad) {
+  return rad * (180 / Math.PI);
+}
+
+function deg2rad(deg) {
+  return deg * (PI / Math.180);
+}
+```
+
+przykłady: 
+- https://codepen.io/amortka/pen/dRpvBp
+- https://codepen.io/amortka/pen/jmWMqG
+- https://codepen.io/amortka/pen/jmWMqG
+
+## Skale
+Skale w d3.js to zwykłe funkcje, które dla zadanej wartości zwracają nam nową wartość przeskalowaną w zależności od konfiguracji funkcji. Najczęściej używana jest skala liniowa oraz czasowa.
+
+### scaleLinear
+```
+const data = [
+  0, 2, 3, 4, 5, 6, 7
+]
+
+const x =  d3
+      .scaleLinear()
+      .range([0, 100])
+      .domain([0, 10]);
+
+data.forEach(d => {
+  console.log(`x(${d}) -> ${x(d)}`);
+})
+```
+
+Skalę tworzymy korzystając z metody `d3.scaleLinear()`, do jej podstawowej konfiguracji używamy dwóch metod:
+- `.domain` - określa domenę skali, wymaga co najmniej dwóch elementów, jeśli podane elementy nie są liczbami będą na nie rzutowane. 
+- `.range` - określa zasięg funkcji, czyli jakie wartości będą zwracane przez skalę. Mogą to być dowolne wartości, które są obsługiwane przes interpolator. np `.range(["red", "white", "green"]);`
+
+Przykładowa skala liniowa, która dla wartości od 0 do 10 będzie interpolować do wartości 0, 100.
+```javascript
+const data = [
+  0, 2, 3, 4, 5, 6, 7, 25
+]
+
+const x =  d3
+      .scaleLinear()
+      .range([0, 100])
+      .domain([0, 10]);
+
+data.forEach(d => {
+  console.log(`x(${d}) -> ${x(d)}`);
+})
+```
+W przypadku wartości wejściowej `25` wynik to `250` zgodnie z przwidywaniami. Aby uniknąć wychodzenia poza zasięg można skorzystać z metody `.clamp(true)`.
+Przykład: https://codepen.io/amortka/pen/RgodbM
+
+
+## Osie
+
+## Linie
+
+## Animacje (transition)
+
+## Sekwencja animacji (transition chaining)
+
+## Zdarzenia
+
+## Zdarzenia animacji (transition.on)
+
+## Zdarzenie endAll
+
+
+przykład: https://codepen.io/amortka/pen/NgRNYm
+---
+---
 ## Przydatne linki:
 - [playground codepen](https://codepen.io/amortka/pen/qmLddG?editors=0010)
 - [dokumentacja d3.js](https://github.com/d3/d3/blob/master/API.md)
@@ -170,7 +264,6 @@ Na koniec parę inspiracji:
 - [galeria twórcy d3.js](https://bl.ocks.org/mbostock)
 - [d3 1000 demos](http://techslides.com/over-1000-d3-js-examples-and-demos)
 - [30 amazing data viz galleries](http://visualoop.com/blog/11044/30-amazing-data-viz-galleries-everyone-should-follow)
-
 
 
 
